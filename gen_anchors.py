@@ -47,6 +47,7 @@ def print_anchors(centroids):
             
     print(out_string[:-2])
 
+
 def run_kmeans(ann_dims, anchor_num):
     ann_num = ann_dims.shape[0]
     iterations = 0
@@ -84,6 +85,7 @@ def run_kmeans(ann_dims, anchor_num):
         prev_assignments = assignments.copy()
         old_distances = distances.copy()
 
+
 def _main_(argv):
     config_path = args.conf
     num_anchors = args.anchors
@@ -93,9 +95,7 @@ def _main_(argv):
 
     train_imgs, train_labels = parse_voc_annotation(
         config['train']['train_annot_folder'],
-        config['train']['train_image_folder'],
-        config['train']['cache_name'],
-        config['model']['labels']
+        config['train']['train_image_folder']
     )
 
     # run k_mean to find the anchors
@@ -113,6 +113,7 @@ def _main_(argv):
     # write anchors to file
     print('\naverage IOU for', num_anchors, 'anchors:', '%0.2f' % avg_IOU(annotation_dims, centroids))
     print_anchors(centroids)
+
 
 if __name__ == '__main__':
     argparser = argparse.ArgumentParser()
