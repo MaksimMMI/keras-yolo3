@@ -15,7 +15,6 @@ from utils.multi_gpu_model import multi_gpu_model
 import tensorflow as tf
 import keras
 from keras.models import load_model
-from EmailMMI import EmailMMI
 import time
 
 def create_training_instances(
