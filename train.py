@@ -15,6 +15,8 @@ from utils.multi_gpu_model import multi_gpu_model
 import tensorflow as tf
 import keras
 from keras.models import load_model
+from EmailMMI import EmailMMI
+import time
 
 def create_training_instances(
     train_annot_folder,
@@ -275,8 +277,9 @@ def _main_(args):
 
 
 if __name__ == '__main__':
+    start_time = time.time()
     argparser = argparse.ArgumentParser(description='train and evaluate YOLO_v3 model on any dataset')
     argparser.add_argument('-c', '--conf', default='config.json', help='path to configuration file')
-
     args = argparser.parse_args()
     _main_(args)
+    print("Training complete! Duration: {} hours".format(round((time.time()-start_time)/60/60, 2)))
